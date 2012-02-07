@@ -20,7 +20,11 @@ object Problem_018 extends App {
     Array(04, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 04, 23)
   )
 
-  val zipped = a.map(xs => xs.zipWithIndex.sortBy(_._1).reverse)
+  def path(rows: Array[Array[Int]], bottom:Seq[Int]): Int = {
+    val ms = bottom.zip(bottom.tail).map(p => p._1 max p._2)
+    val ss = rows.last.zip(ms).map(p => p._1 + p._2)
+    if(ss.size == 1) ss.head else path(rows.init, ss)
+  }
 
-  zipped.foreach(x => println(x.mkString(", ")))
+  assert(1074 == path(a.init, a.last))
 }
