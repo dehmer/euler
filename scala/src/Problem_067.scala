@@ -13,9 +13,7 @@ object Problem_067 extends App {
     if(ss.size == 1) ss.head else path(rows.init, ss)
   }
 
-  val duration = timed {
+  val duration = timed("duration: %d ms.") {
     assert(7273 == path(a.init, a.last))
   }
-  
-  println("duration: " + duration + " ms.")
 }
