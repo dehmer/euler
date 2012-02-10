@@ -1,8 +1,9 @@
 
 object Problem_011 extends App {
-
+  import Predef.timed
+  
   val n = 4
-  val m = List(
+  val m = List (
     List(8, 2, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 8),
     List(49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 0),
     List(81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65),
@@ -45,8 +46,8 @@ object Problem_011 extends App {
     val a = xxi.map(xs => xs.toArray).toArray
     val slices = (0 until 2 * 20 - 1).map {
       slice =>
-        val z = if (slice < 20) 0 else slice - 20 + 1
-        (z to slice - z).foldLeft(List[Int]())((acc, j) => a(j)(slice - j) :: acc)
+      val z = if (slice < 20) 0 else slice - 20 + 1
+      (z to slice - z).foldLeft(List[Int]())((acc, j) => a(j)(slice - j) :: acc)
     }
 
     slices.filter(_.length >= n).toList
@@ -56,13 +57,15 @@ object Problem_011 extends App {
     val a = xxi.map(xs => xs.toArray).toArray
     val slices = (0 until 2 * 20 - 1).map {
       slice =>
-        val z = if (slice < 20) 0 else slice - 20 + 1
-        (z to slice - z).foldLeft(List[Int]())((acc, j) => a((20 - 1) - j)(slice - j) :: acc)
+      val z = if (slice < 20) 0 else slice - 20 + 1
+      (z to slice - z).foldLeft(List[Int]())((acc, j) => a((20 - 1) - j)(slice - j) :: acc)
     }
 
     slices.filter(_.length >= n).toList
   }
 
-  val result = (fA :: fB :: fC :: fD :: Nil).map(f => mmax(f(m))).max
-  println("result: " + result)
+  timed("duration: %d ms.") {
+    val result = (fA :: fB :: fC :: fD :: Nil).map(f => mmax(f(m))).max
+    assert(70600674 == result)
+  }
 }
