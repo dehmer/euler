@@ -1,9 +1,7 @@
-package level_03
+package euler.level_03
 
 object Problem_067 extends App {
-
   import io.Source
-  import Predef.timed
   import math.max
 
   def asIntArray(s: String) = s.trim.split("\n").map(_.split("\\s").map(_.toInt))
@@ -20,7 +18,5 @@ object Problem_067 extends App {
     if (ss.size == 1) ss.head else path(rows.init, ss)
   }
 
-  val duration = timed("duration: %d ms.") {
-    assert(7273 == path(a.init, a.last))
-  }
+  assert(7273 == path(a.init, a.last))
 }

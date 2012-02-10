@@ -1,14 +1,16 @@
-package level_02
+package euler.level_02
 
-/**Which prime, below one-million, can be written as the sum of the most consecutive primes? */
+/**
+ * Which prime, below one-million, can be written as the sum of the most consecutive primes?
+ */
 object Problem_050 extends App {
-
-  import Predef.primes
+  import euler.Primes
 
   // 78,498 prime numbers < 1,000,000
-  val ps: Stream[(Long, Long)] = (2L, 2L) #:: primes.drop(1).zip(ps.map(_._2)).map {
+  val ps: Stream[(Long, Long)] = (2L, 2L) #:: Primes.drop(1).zip(ps.map(_._2)).map {
     case (a, b) => (a, a + b)
   }
+
   val xs = ps.takeWhile {
     case (p, _) => p < 1000000
   }.toArray

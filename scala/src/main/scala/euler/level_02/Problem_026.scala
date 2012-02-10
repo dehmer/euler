@@ -1,4 +1,4 @@
-package level_02
+package euler.level_02
 
 object Problem_026 extends App {
   // http://en.wikipedia.org/wiki/Recurring_decimal

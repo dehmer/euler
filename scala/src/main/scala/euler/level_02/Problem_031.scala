@@ -1,9 +1,6 @@
-package level_02
+package euler.level_02
 
 object Problem_031 extends App {
-
-  import Predef.timed
-
   val coins = List(200, 100, 50, 20, 10, 5, 2, 1)
   val maxValue = 200
 
@@ -13,9 +10,5 @@ object Problem_031 extends App {
     case (h :: t, v) => (0 to (maxValue - v) / h).map(i => combinations(t, v + i * h, acc)).sum
   }
 
-  println(combinations(coins, 0, 0).toString)
-
-  val duration = timed("duration: %d ms.") {
-    assert(73682 == combinations(coins, 0, 0))
-  }
+  assert(73682 == combinations(coins, 0, 0))
 }

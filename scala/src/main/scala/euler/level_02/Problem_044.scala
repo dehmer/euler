@@ -1,4 +1,4 @@
-package level_02
+package euler.level_02
 
 object Problem_044 extends App {
 
