@@ -1,5 +1,6 @@
 package euler.level_01
 
+import org.junit.Assert._
 import org.junit.Test
 
 final class Test_013 {
@@ -108,7 +109,7 @@ final class Test_013 {
   )
 
   @Test def verifyAnswer() {
-    val ExpectedAnswer = 5537376230L
-    assert(ExpectedAnswer == x.reduceLeft(_ + _).toString().substring(0, 10))
+    val ExpectedAnswer = "5537376230"
+    assertEquals(ExpectedAnswer, x.reduceLeft(_ + _).toString().substring(0, 10))
   }
 }

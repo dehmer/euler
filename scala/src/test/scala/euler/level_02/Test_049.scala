@@ -1,7 +1,10 @@
 package euler.level_02
 
-object Problem_049 extends App {
-  import euler.Primes
+import euler.Primes
+import org.junit.Assert._
+import org.junit.Test
+
+final class Test_049 {
 
   def digits(i: Long): Set[Long] = {
     def digits(i: Long, acc: Set[Long]): Set[Long] = if (i >= 10) digits(i / 10, acc + (i % 10)) else acc + i
@@ -11,6 +14,7 @@ object Problem_049 extends App {
   def sameDigits(a: Long, b: Long) = digits(a) == digits(b)
 
   val xs = Primes.dropWhile(_ < 1000).takeWhile(_ < 10000).toArray
+
   val tuples = for {
     i <- 0 until xs.length
     j <- i + 1 until xs.length
@@ -21,7 +25,12 @@ object Problem_049 extends App {
   }
   yield ((xs(i), xs(j), xs(k)))
 
-  assert("296962999629" == tuples.map {
+  @Test def verifyAnswer() {
+    val ExpectedAnswer = "296962999629"
+    assertEquals(ExpectedAnswer, answer)
+  }
+
+  def answer = tuples.map {
     case (a, b, c) => "" + a + b + c
-  }.filter(_ != "148748178147").head)
+  }.filter(_ != "148748178147").head
 }

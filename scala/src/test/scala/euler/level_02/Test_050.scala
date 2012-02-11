@@ -1,10 +1,13 @@
 package euler.level_02
 
+import euler.Primes
+import org.junit.Assert._
+import org.junit.Test
+
 /**
  * Which prime, below one-million, can be written as the sum of the most consecutive primes?
  */
-object Problem_050 extends App {
-  import euler.Primes
+final class Test_050 {
 
   // 78,498 prime numbers < 1,000,000
   val ps: Stream[(Long, Long)] = (2L, 2L) #:: Primes.drop(1).zip(ps.map(_._2)).map {
@@ -33,5 +36,9 @@ object Problem_050 extends App {
     }
   }
 
-  assert((997651L, 543) == chain)
+  @Test def answer = {
+    val ExpectedAnswer = (997651L, 543)
+    assertEquals(ExpectedAnswer, chain)
+    
+  }
 }

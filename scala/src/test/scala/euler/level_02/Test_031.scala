@@ -1,6 +1,9 @@
 package euler.level_02
 
-object Problem_031 extends App {
+import org.junit.Test
+
+final class Test_031 {
+
   val coins = List(200, 100, 50, 20, 10, 5, 2, 1)
   val maxValue = 200
 
@@ -10,5 +13,8 @@ object Problem_031 extends App {
     case (h :: t, v) => (0 to (maxValue - v) / h).map(i => combinations(t, v + i * h, acc)).sum
   }
 
-  assert(73682 == combinations(coins, 0, 0))
+  @Test def verifyAnswer() {
+    val ExpectedAnswer = 73682
+    assert(ExpectedAnswer == combinations(coins, 0, 0))
+  }
 }
