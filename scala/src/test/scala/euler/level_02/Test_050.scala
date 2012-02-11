@@ -39,6 +39,5 @@ final class Test_050 {
   @Test def answer = {
     val ExpectedAnswer = (997651L, 543)
     assertEquals(ExpectedAnswer, chain)
-    
   }
 }
