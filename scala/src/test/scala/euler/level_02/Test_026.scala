@@ -6,7 +6,7 @@ import org.junit.Test
 final class Test_026 {
 
   @Test def verifyAnswer() {
-    val ExpectedAnswer =
+    val ExpectedAnswer = 983
     assertEquals(983, asnwer)
   }
   
